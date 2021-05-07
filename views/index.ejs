@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href=" https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Roboto:wght@300&family=Rock+Salt&display=swap" rel="stylesheet">
+    <title></title>
+  </head>
+  
+  <body>
+     <div>
+       <div class="nav-intro-bg">
+        <nav class="navbar navbar-expand-lg" >
+          <div><a class="navbar-brand" href="#" id="memoriesTitle"><i class="fas fa-archive"></i>MEMORIES</a></div>
+            <div id='aboutMe'>             
+                <a class="nav-link" data-toggle="modal" data-target="#aboutMeModal">About</a>
+            </div>
+        </nav>  
+        <div id="intro">
+            <div id="quote">
+                <h1 class="display-4 quote-text">Memories</h1>
+                <p class="lead quote-text">Memory... is the diary we all carry with us</p>
+            </div>
+        </div>
+        <div class="modal fade" id="aboutMeModal">
+          <div class="modal-dialog">
+            <div class="modal-content">          
+              <div class="modal-header">
+                <h5 class="modal-title"></i> ABOUT</h5> 
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>         
+              <div class="modal-body"><br><h4>Memories:</h4> <%= aboutMe.info %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>      
+            </div>
+           </div>
+         </div>
+      </div>
+
+      <div class="center-h-v card-deck-container" id="cardDeck">    
+          <div class="row">
+            <% memories.forEach( (memory, index) => { %>
+            <div class="col-sm-4">
+              <div class='card-br'>
+                <div class="card mem-cards" id="<%= `card${index}` %>">
+                    <div class="img-container">
+                      <img src="<%= memory.imgPath %>" class="card-img-top" alt="memory-image"> 
+                    </div>
+                    <div class="card-body">
+                      <h3 class="card-title"><%= memory.title %></h3>
+                      <h6 class="card-creator"><%= memory.creator %></h6>
+                      <p class="card-text card-msg-short"><%= memory.message.substring(0, 100) %>
+                        <% if(memory.message.length > 100){ %> 
+                          ... 
+                          <a class="read-more">Read More</a>
+                        <% } %>
+
+                      </p>     
+                      <p class="card-text card-msg-full"><%= memory.message %></p>
+                      <a class="read-less">Read Less</a>
+                    </div>
+                    <ul class="list-group list-group-flush" class="tags-dates">
+                      <li class="list-group-item card-tags"><%= '#'+memory.tags.replace(/\s+/g, '').split(',').join(' #'); %></li>
+                      <li class="list-group-item">
+                        <small><%= memory.createdAt.toString().split(" GMT")[0];  %><% if(memory.updatedCount>=1) { %>
+                               <%= '(Updated)' %><% } else { %><%= ' (Created)' %><% } %>
+                        </small>
+                      </li>
+                    </ul>
+                    <div class="card-body card-end">
+                      <form action="/like" method="POST">
+                        <input type="hidden" name="likeId" value="<%= memory._id %>">
+                        <button type="submit" class="card-buttons like-buttons"><i class="fas fa-heart like"></i></button><%= memory.likeCount %>
+                      </form>
+                      <input type="hidden" class="editCardIds" name="editCardHelper" value="<%= memory._id %>" >
+                      <div class="edit-delete-icon">
+                        <i data-toggle="modal" data-target="#add-edit-modal"  class="far fa-edit edit"></i>
+                        <form action="/delete" method="POST">
+                          <input type="hidden" name="deleteId" value="<%= memory._id %>">
+                          <button type="submit" class="card-buttons delete-buttons"><i class="far fa-trash-alt delete"></i></button>
+                        </form>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }); %>   
+          <div class="col-sm-4" >
+            <div class="card-br">
+            <div class="card center-h-v" id="addCard">
+              <button type="button" class="btn" id="addMemoryBtn"><i class="fas fa-plus plus"></i><br>ADD MEMORY</button>
+            </div>
+          </div>
+        </div>
+        </div>
+       </div>
+      </div>
+
+    <div class="row reverse quotes-and-form">
+      <div class="col-sm quotes-part">  
+        <% quotesData.forEach((quoteData, index) => { %>
+          <div class="quote-boxes">
+        <div class="card quote text-white text-center p-3">
+          <blockquote class="blockquote mb-0">
+            <p><%= quoteData.quote %></p>
+            <footer class="blockquote-footer text-white">
+              <small><cite title="Source Title"><%= quoteData.author %></cite></small>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+        <% }); %>
+      </div>
+
+      <div class="col-sm" id="formPart">
+          <div class="form-container">
+          <form id="memoryForm" action="/" method="POST" enctype="multipart/form-data">
+            <h3 id='formName'>Add A New Memory</h3>
+            <input type='hidden' name='updateId' value="" id='editId'>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" name="title" value="" id="title" placeholder="Title" required>
+            </div>   
+            <div class="form-group">
+              <label for="creator">Creator</label>
+              <input type="text" class="form-control" name="creator" id="creator" placeholder="Your Kind Name" value="" required>
+            </div>   
+            <div class="form-group">
+              <label for="tags">Tags</label>
+              <input type="text" class="form-control" name="tags" id="tags" value="" placeholder="tag1, tag2, tag3,..." required>
+            </div>
+            <div class="form-group">
+              <label for="chooseImg" id="imgInputLabel">Choose Image</label>&nbsp;&nbsp;<i class="fas fa-upload"></i>
+              <div class="img-preview-container"><img id="imgPreview" src=""></div> 
+              <input type="file" class="form-control-file" name="memory-image" id="chooseImg">
+            </div>
+            <div class="form-group">
+              <label for="message" >Message</label>
+              <textarea class="form-control" name="message" value="" id="message" rows="3" placeholder="What's special to you about this memory?" required></textarea>
+            </div>    
+            <button type="submit" class="btn btn-success" id="addEditMemory">Save</button>
+            <button type="button" class="btn btn-warning" id="clear">Clear</button>
+            <button type="button" class="btn btn-primary" id="changeToAddForm">Change to Add</button>
+          </form>
+          </div>
+        </div>
+      </div>
+
+  <footer class="footer center-h-v">
+      Made by Rahul Kumar Yadav @ 2021
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src='js/memory.js' defer></script>
+   </div>
+ </body>
+</html>

@@ -1,0 +1,393 @@
+html body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #77aa77;
+    /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 2 1'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='0' x2='0' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%2377aa77'/%3E%3Cstop offset='1' stop-color='%234fd'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23cf8' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23cf8' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' gradientUnits='userSpaceOnUse' x1='0' y1='0' x2='2' y2='2'%3E%3Cstop offset='0' stop-color='%23cf8' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23cf8' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='0' y='0' fill='url(%23a)' width='2' height='1'/%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23b)' points='0 1 0 0 2 0'/%3E%3Cpolygon fill='url(%23c)' points='2 1 2 0 0 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed; */
+    background: url("/images/background.jpg") no-repeat center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-top: 2rem;       
+}
+
+input[type='file']{
+    cursor:pointer;
+}
+
+form label {
+    color: #557C83;
+}
+
+textarea{
+    min-height: 70px;
+    max-height: 140px;
+}
+
+i {
+    font-size: 25px;
+}
+
+.like {
+    padding-right: 10px;
+    color: rgb(212, 87, 175);
+}
+.edit{
+    color: rgb(0, 0, 255);
+}
+
+.delete {
+    color:rgb(255, 0, 0);
+}
+
+.edit:hover {
+    color: rgb(48, 44, 156); 
+}
+
+.like:hover{
+    color: rgb(135, 44, 156);
+}
+
+.delete:hover{
+    color: rgb(189, 53, 85);
+}
+
+.plus:hover {
+    color: #ffffff;
+}
+
+i:hover {
+    color: black;
+}
+
+a:hover{
+text-decoration:none;
+}
+
+
+.card {
+    padding:0px;
+    border-radius: 4%;
+    opacity: 0.9;
+}
+
+.card-buttons {
+    border: none;
+    padding: 0;  
+    border-radius: 50%;
+    background-color: rgb(171, 235, 223);
+}
+
+.card-br {
+    padding-top: 4rem;
+    border-radius: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-body {
+    color: #ffffff;
+    background-color:#3AAFA9;
+}
+
+.card-creator {
+    font-family: 'Rock Salt', cursive;  
+    color: black;
+}
+
+.card-deck-container {
+   padding: 5rem auto 1rem;
+}
+
+.card-end{
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    border-bottom-left-radius: 4%;
+    border-bottom-right-radius: 4%;
+    background-color: rgb(171, 235, 223);
+}
+
+.card-img-top {
+    height:197px;
+}
+
+.card-msg-full {
+    display: none;
+}
+
+.card-title{
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.center-h-v {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    color: #ffffff;
+    text-shadow: none;
+}
+
+.edit-delete-icon{
+    display: flex;;
+}
+
+.fa-archive {
+    padding-right: 10px;
+}
+
+.fa-archive:hover {
+    color: #ffffff;
+}
+
+.fa-edit {
+    cursor: pointer;
+    padding-right: 4px;
+}
+
+.form-container{
+    width:400px;
+    height:750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2%;
+    background-color: #ffffff;
+    opacity: 0.9;
+}
+
+
+.footer {
+    position: relative;
+    bottom: 0;
+    width:100%;
+    text-align: center;
+    height: 100px;
+    background-color: #557C83;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+.img-preview-container {
+    padding-bottom: 7px;
+}
+
+.intro-content {
+    font-size: 2em;
+}
+
+.mem-cards {
+    width: 18rem;
+}
+
+.read-more {
+    display: block;
+}
+
+.read-less{
+    display: none;
+}
+
+/*BOOTSTRAP MODAL OVERRIDE*/
+.modal {
+    padding-right: 0 !important;
+}
+
+.modal-open {
+    overflow:hidden;
+    overflow-y:scroll;
+    padding-right:0 !important;
+}
+
+.modal-header {
+    background-color: #3AAFA9;
+    color: #ffffff;
+}
+
+#aboutMeModal {
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+    opacity: 0.9;
+    padding: 15px 60px;
+    background-color: #557C83;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a{
+    color: #ffffff;
+}
+
+.nav-intro-bg {
+      /* background: linear-gradient(135deg, #4C8281 4%, cyan); */
+    background: url('/images/intro.jpg') no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+    width:100%;
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.read-more {
+    border: none;
+    padding: 0px;
+    background-color: #3AAFA9;
+    color: rgba(59, 2, 82, 0.7);
+}
+
+.read-more:hover {
+    color:rgb(79, 11, 105);
+}
+
+.read-less {
+    color: rgba(59, 2, 82, 0.7);
+}
+
+.read-less:hover {
+    color:rgb(79, 11, 105);
+}
+
+.row {
+    margin: 0;
+    width: 100%;
+}
+
+.tags-dates {
+    font-family: 'Roboto', sans-serif;
+}
+
+.quote {
+    border-radius: 2%;
+    background-color: #557C83;
+}
+
+.quotes-and-form {
+    padding: 50px 20px;
+}
+
+.quote-boxes {
+    padding-top: 3rem;
+}
+
+.quotes-part{
+    padding: 100px 100px;
+}
+
+#aboutMe {
+    color: #ffffff;
+}
+
+#aboutMe a {
+    color: #ffffff;
+}
+
+#addCard {
+    width: 18rem;
+    height:512px;
+}
+
+#addMemoryBtn {
+    color: #ffffff;
+    background-color:#3AAFA9;
+}
+
+#addMemoryBtn:hover {
+    color: #ffffff;
+    background-color: #557C83;
+}
+
+#clear {
+    color: #ffffff;
+}
+
+
+#chooseImg {
+    color: transparent;
+    width: 100px;
+}
+
+#changeToAddForm {
+    display: none;
+}
+
+#formName{
+    color: #557C83;
+}
+
+#formPart{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#memoryForm{
+    width: 300px;
+}
+
+#imgPreview {
+    width:143px;
+    height:99px;
+}
+
+#intro {
+    color:  rgb(235, 235, 235);
+    height: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#memory-title {
+    display: flex;
+}
+
+#quote {
+    background-color: #557C83;
+    border-radius: 2%;
+    padding: 20px;
+    opacity: 0.8;
+}
+
+@media (max-width: 900px) {
+
+    #intro {
+        padding: 10px;
+    }
+
+    .form-container {
+        padding: 10px 20px;
+    }
+
+    .navbar {
+        padding: 5px;
+    }
+
+    .quote {
+        width: 100%;
+    }
+
+    .quotes-part {
+        padding: 0;
+    }
+
+    .reverse {
+      flex-direction: column-reverse;
+    }
+  }
+
+
+
+
