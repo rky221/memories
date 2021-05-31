@@ -6,4 +6,5 @@ Built using HTML, CSS, JQuery, Bootstrap, EJS, Node.js, Express.js, Mongoose and
 Run:
 
 npm install 
+
 npm start
